@@ -2,8 +2,6 @@
 
 namespace FourWayChess\Rating;
 
-use App\Models\User;
-
 trait HasRatingManager
 {
     /**
@@ -15,13 +13,19 @@ trait HasRatingManager
      */
     public function calculateRatings(bool $update = true)
     {
-        $result = $this->result;
-        $rr = RatingCalculator::calculate(($this->blue + $this->green) / 2, $this->red, $this->r_constant, $result);
-        $yr = RatingCalculator::calculate(($this->blue + $this->green) / 2, $this->yellow, $this->y_constant, $result);
-        if ($result === -1)
-            $result = 1;
-        $br = RatingCalculator::calculate(($this->red + $this->yellow) / 2, $this->blue, $this->b_constant, $result);
-        $gr = RatingCalculator::calculate(($this->red + $this->yellow) / 2, $this->green, $this->g_constant, $result);
+        if ($this->result === 0) {
+            $rresult = $yresult = $bresult = $gresult = 0.5;
+        } elseif ($this->result === 1) {
+            $rresult = $yresult = 1;
+            $bresult = $gresult = 0;
+        } else {
+            $rresult = $yresult = 0;
+            $bresult = $gresult = 1;
+        }
+        $rr = RatingCalculator::calculate(($this->blue + $this->green) / 2, $this->red, $this->r_constant, $rresult);
+        $yr = RatingCalculator::calculate(($this->blue + $this->green) / 2, $this->yellow, $this->y_constant, $yresult);
+        $br = RatingCalculator::calculate(($this->red + $this->yellow) / 2, $this->blue, $this->b_constant, $bresult);
+        $gr = RatingCalculator::calculate(($this->red + $this->yellow) / 2, $this->green, $this->g_constant, $gresult);
         if ($update)
             $this->updateRatings([$rr, $br, $yr, $gr]);
         else
