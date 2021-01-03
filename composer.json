@@ -14,10 +14,7 @@
     "autoload": {
         "psr-4": {
             "FourWayChess\\Rating\\": "./src"
-        },
-        "files": [
-            "./helper.php"
-        ]
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
