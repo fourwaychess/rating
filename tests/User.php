@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Permission\Test;
+namespace FourWayChess\Tests;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
