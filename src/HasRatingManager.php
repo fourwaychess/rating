@@ -18,6 +18,6 @@ trait HasRatingManager
             $result = 1;
         $br = (new RatingCalculator)->calculate(($this->red + $this->yellow) / 2, $this->blue, $this->b_constant, $result);
         $gr = (new RatingCalculator)->calculate(($this->red + $this->yellow) / 2, $this->green, $this->g_constant, $result);
-        return [$rr, $br, $yr, $gr]
+        return [$rr, $br, $yr, $gr];
     }
 }
