@@ -7,7 +7,7 @@ class RatingCalculator
     /**
      * Calculate the new ratings.
      *
-     * @param int $team     Team A's rating.
+     * @param int $team     Opposing team's rating.
      * @param int $user     User's rating.
      * @param int $constant A constant var.
      * @param int $result   Did the user win.
