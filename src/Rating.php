@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Cashier;
+namespace FourWayChess\Rating;
 
 class Rating
 {
