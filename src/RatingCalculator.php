@@ -16,9 +16,11 @@ class RatingCalculator
      */
     public static function calculate(int $team, int $user, int $constant, int $result): int
     {
-        $userProbability = (1.0 * 1.0 / (1 + 1.0 * pow(10, 1.0 * ($user - $team) / 400)));
+        $userProbability = (1.0 * 1.0 / (1 + 1.0 * pow(10, 1.0 * ($team - $user) / 400)));
         if ($result === 1)
             $user = $user + $constant * (1 - $userProbability);
+        elseif ($result === 2)
+            $user = $user + $constant * (0.5 - $userProbability);
         else
             $user = $user + $constant * (0 - $userProbability);
         return $user;
