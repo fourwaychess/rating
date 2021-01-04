@@ -2,6 +2,8 @@
 
 namespace FourWayChess\Rating;
 
+use Illuminate\Support\Facades\DB;
+
 trait HasRatingManager
 {
     /**
