@@ -13,11 +13,12 @@ trait HasRatingManager
      */
     public function calculateRatings(bool $update = true)
     {
-        if ($this->result === 0) {
-            $rresult = $yresult = $bresult = $gresult = 0.5;
-        } elseif ($this->result === 1) {
+        if ($this->result === 1) {
             $rresult = $yresult = 1;
             $bresult = $gresult = 0;
+        } elseif ($this->result === 0) {
+            $rresult = $yresult = 2;
+            $bresult = $gresult = 2;
         } else {
             $rresult = $yresult = 0;
             $bresult = $gresult = 1;
@@ -28,8 +29,7 @@ trait HasRatingManager
         $gr = RatingCalculator::calculate(($this->red + $this->yellow) / 2, $this->green, $this->g_constant, $gresult);
         if ($update)
             $this->updateRatings([$rr, $br, $yr, $gr]);
-        else
-            return [$rr, $br, $yr, $gr];
+        return [$rr, $br, $yr, $gr];
     }
 
     /**
