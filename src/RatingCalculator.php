@@ -14,7 +14,7 @@ class RatingCalculator
      *
      * @return array Returns the updated ratings.
      */
-    public static function calculate(int $team, int $user, int $constant, int $result): array
+    public static function calculate(int $team, int $user, int $constant, int $result): int
     {
         $userProbability = (1.0 * 1.0 / (1 + 1.0 * pow(10, 1.0 * ($user - $team) / 400)))
         if ($result === 1)
